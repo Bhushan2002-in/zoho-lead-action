@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lead Action</title>
+  <style>
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h3>Select an action for the lead</h3>
+
+  <form method="POST" id="formJunk">
+    <input type="hidden" name="lead_id" id="junkLeadId">
+    <input type="hidden" name="status" value="Junk">
+    <button class="btn" type="submit">Junk</button>
+  </form>
+
+  <form method="POST" id="formNeedInfo">
+    <input type="hidden" name="lead_id" id="needInfoLeadId">
+    <input type="hidden" name="status" value="Need More Info">
+    <button class="btn" type="submit">Need More Info</button>
+  </form>
+
+  <form method="POST" id="formQuote">
+    <input type="hidden" name="lead_id" id="quoteLeadId">
+    <input type="hidden" name="status" value="Ready to Quote">
+    <button class="btn" type="submit">Ready to Quote</button>
+  </form>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const leadId = urlParams.get('lead_id');
+
+    const webhookURL = "https://flow.zoho.com/865129498/flow/webhook/incoming?zapikey=1001.f64f23d55dd899d6832eb7f27b776721.6fec0d16c48b770865031c4755a8dc08&isdebug=false";
+
+    document.getElementById("formJunk").action = webhookURL;
+    document.getElementById("formNeedInfo").action = webhookURL;
+    document.getElementById("formQuote").action = webhookURL;
+
+    document.getElementById("junkLeadId").value = leadId;
+    document.getElementById("needInfoLeadId").value = leadId;
+    document.getElementById("quoteLeadId").value = leadId;
+  </script>
+</body>
+</html>
