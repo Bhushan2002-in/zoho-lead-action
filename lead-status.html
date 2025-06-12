@@ -1,56 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Lead Action</title>
-  <style>
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      background-color: #007BFF;
-      color: white;
-      text-decoration: none;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <h3>Select an action for the lead</h3>
+<p>Hi ${createOrUpdateLead_21.Owner},<br></p><p>You’ve been assigned a new qualified lead. Please log in to CRM to view the full details.<br></p><p>Lead Summary:<br></p><ul style="margin-top: 10px; margin-bottom: 20px;"><li>Name: ${createOrUpdateLead_21.Full_Name}<br></li><li>Source: ${createOrUpdateLead_21.Lead_Source}<br></li><li>Industry: ${createOrUpdateLead_21.Industry}<br></li><li>Next Step: Choose the correct button to proceed further.<br></li></ul><p>If you need support or additional info, give us a shout.<br></p><p>Thanks,<br><b>SINTRA CRM Notifications</b></p>
 
-  <form method="POST" id="formJunk">
-    <input type="hidden" name="lead_id" id="junkLeadId">
-    <input type="hidden" name="status" value="Junk">
-    <button class="btn" type="submit">Junk</button>
-  </form>
+<div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;" class="button-container">
 
-  <form method="POST" id="formNeedInfo">
-    <input type="hidden" name="lead_id" id="needInfoLeadId">
-    <input type="hidden" name="status" value="Need More Info">
-    <button class="btn" type="submit">Need More Info</button>
-  </form>
+<form method="POST" action="https://flow.zoho.com/865129498/flow/webhook/incoming?zapikey=1001.f64f23d55dd899d6832eb7f27b776721.6fec0d16c48b770865031c4755a8dc08&isdebug=false">
+<input value="{
+        &quot;lead_status&quot;: &quot;${createOrUpdateLead_21.Lead_Status}&quot;,
+        &quot;lead_id&quot;: &quot;${createOrUpdateLead_21.id}&quot;,
+        &quot;owner&quot;: &quot;${createOrUpdateLead_21.Owner}&quot;,
+        &quot;Conatct_name&quot;: &quot;${createOrUpdateLead_21.Full_Name}&quot;,
+        &quot;Conatct_email&quot;: &quot;${createOrUpdateLead_21.Email}&quot;,
+        &quot;source&quot;: &quot;${createOrUpdateLead_21.Lead_Source}&quot;
+      }" name="payload" type="hidden"><button style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 6px; font-size: 14px;" class="btn" type="submit">Junk</button></form>
 
-  <form method="POST" id="formQuote">
-    <input type="hidden" name="lead_id" id="quoteLeadId">
-    <input type="hidden" name="status" value="Ready to Quote">
-    <button class="btn" type="submit">Ready to Quote</button>
-  </form>
 
-  <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const leadId = urlParams.get('lead_id');
+<a href="https://crm.zoho.com/crm/org681243042/tab/Potentials/3723703000022067470" target="_blank"> <button style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 6px; font-size: 14px;" class="btn" type="submit">Need More Info</button></a> 
 
-    const webhookURL = "https://flow.zoho.com/865129498/flow/webhook/incoming?zapikey=1001.f64f23d55dd899d6832eb7f27b776721.6fec0d16c48b770865031c4755a8dc08&isdebug=false";
 
-    document.getElementById("formJunk").action = webhookURL;
-    document.getElementById("formNeedInfo").action = webhookURL;
-    document.getElementById("formQuote").action = webhookURL;
 
-    document.getElementById("junkLeadId").value = leadId;
-    document.getElementById("needInfoLeadId").value = leadId;
-    document.getElementById("quoteLeadId").value = leadId;
-  </script>
-</body>
-</html>
+
+
+<form method="POST" action="https://flow.zoho.com/865129498/flow/webhook/incoming?zapikey=1001.47f30772537aaaf221dd0528d2aa1ac7.643656db5880b0cf1931639d593e9c4d&isdebug=false">
+<input value="{
+        &quot;lead_status&quot;: &quot;${createOrUpdateLead_21.Lead_Status}&quot;,
+        &quot;lead_id&quot;: &quot;${createOrUpdateLead_21.id}&quot;,
+        &quot;owner&quot;: &quot;${createOrUpdateLead_21.Owner}&quot;,
+        &quot;Conatct_name&quot;: &quot;${createOrUpdateLead_21.Full_Name}&quot;,
+        &quot;Conatct_email&quot;: &quot;${createOrUpdateLead_21.Email}&quot;,
+        &quot;source&quot;: &quot;${createOrUpdateLead_21.Lead_Source}&quot;
+      }" name="payload" type="hidden"> <button style="display: inline-block; padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 6px; font-size: 14px;" class="btn" type="submit">Ready To Quote</button></form><br></div>
